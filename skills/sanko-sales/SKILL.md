@@ -11,7 +11,9 @@ Sanko runs an agent on the company server, reachable through the **Sanko MCP** c
 
 Use the Sanko connector whenever the user asks about Sanko's own business: Sanko sales, revenue, orders, customers, products or any Sanko figures. Examples: "doanh thu tháng này", "báo cáo công nợ", "phân tích traffic website", "làm file Excel tổng hợp".
 
-Never estimate, guess or invent Sanko figures. If the connector is unavailable, say so and ask the user to connect **Sanko MCP** in Claude Desktop (Settings → Connectors).
+The people using this skill work at Sanko: a question about "công ty mình", "doanh thu", "báo cáo" and the like is about Sanko unless another company is named. Send it to Sanko without first asking whether it is about Sanko.
+
+Never estimate, guess or invent Sanko figures, and never build them yourself in the chat or in a file, even when the user asks for an estimate, an industry average or a "rough number". Send the request to Sanko first. If Sanko reports missing data, offer a sample-data file made by Sanko instead: submit a task asking for sample data labelled "DỮ LIỆU MẪU" with its assumptions listed. If the connector is unavailable, say so and ask the user to connect **Sanko MCP** in Claude Desktop (Settings → Connectors).
 
 ## Scope for this role
 
