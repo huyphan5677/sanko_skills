@@ -3,7 +3,7 @@
   "sources": {
     "sanko": {
       "repo": "https://github.com/huyphan5677/sanko_skills",
-      "ref": "v2",
+      "ref": "v3",
       "path": "skills"
     },
     "marketingskills": {
@@ -28,11 +28,21 @@
     }
   },
   "groups": {
-    "connector-admin": ["sanko/sanko-admin"],
-    "connector-accounting": ["sanko/sanko-accounting"],
-    "connector-marketing": ["sanko/sanko-marketing"],
-    "connector-sales": ["sanko/sanko-sales"],
-    "server-common": ["sanko/sanko-data-discovery"],
+    "connector-admin": [
+      "sanko/sanko-admin"
+    ],
+    "connector-accounting": [
+      "sanko/sanko-accounting"
+    ],
+    "connector-marketing": [
+      "sanko/sanko-marketing"
+    ],
+    "connector-sales": [
+      "sanko/sanko-sales"
+    ],
+    "server-common": [
+      "sanko/sanko-data-discovery"
+    ],
     "data": [
       "anthropic-data/analyze",
       "anthropic-data/explore-data",
@@ -44,7 +54,9 @@
       "anthropic-data/validate-data",
       "anthropic-data/build-dashboard"
     ],
-    "marketing": ["marketingskills/*"],
+    "marketing": [
+      "marketingskills/*"
+    ],
     "accounting": [
       "finance-analyst/financial-analyst",
       "anthropic-finance/financial-statements",
@@ -57,20 +69,52 @@
   },
   "roles": {
     "admin": {
-      "server": ["server-common", "data", "marketing", "accounting"],
-      "client": ["connector-admin", "data", "marketing", "accounting"]
+      "server": [
+        "server-common",
+        "data",
+        "marketing",
+        "accounting"
+      ],
+      "client": [
+        "connector-admin",
+        "data",
+        "marketing",
+        "accounting"
+      ]
     },
     "accounting": {
-      "server": ["server-common", "data", "accounting"],
-      "client": ["connector-accounting", "data", "accounting"]
+      "server": [
+        "server-common",
+        "data",
+        "accounting"
+      ],
+      "client": [
+        "connector-accounting",
+        "data",
+        "accounting"
+      ]
     },
     "marketing": {
-      "server": ["server-common", "data", "marketing"],
-      "client": ["connector-marketing", "data", "marketing"]
+      "server": [
+        "server-common",
+        "data",
+        "marketing"
+      ],
+      "client": [
+        "connector-marketing",
+        "data",
+        "marketing"
+      ]
     },
     "sales": {
-      "server": ["server-common", "data"],
-      "client": ["connector-sales", "data"]
+      "server": [
+        "server-common",
+        "data"
+      ],
+      "client": [
+        "connector-sales",
+        "data"
+      ]
     }
   }
 }

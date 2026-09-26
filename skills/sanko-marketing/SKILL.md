@@ -32,3 +32,5 @@ Other installed skills (data analysis, marketing, finance) help you frame the re
 - When the task succeeds, call `list_artifacts` and give the user the download links. Links expire after five minutes; call `list_artifacts` again if needed.
 - Do not open, read or paste file contents into the chat unless the user explicitly asks. This keeps company data on the server and saves tokens.
 - Relay the task's short summary and headline figures; do not recompute or embellish them.
+- Always pass on the data sources (schema.table and period) and the skills Sanko reports. If files or the summary are labelled "DỮ LIỆU MẪU", say clearly that the figures are sample data, not real Sanko data.
+- If Sanko returns `blocked` or reports missing data, tell the user what is missing; never fill the gap with your own estimates or general knowledge.
