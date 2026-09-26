@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "sources": {
+    "sanko": {
+      "repo": "https://github.com/huyphan5677/sanko_skills",
+      "ref": "v2",
+      "path": "skills"
+    },
+    "marketingskills": {
+      "repo": "https://github.com/coreyhaines31/marketingskills",
+      "ref": "5b2c0007766c6a1cf1d53fd8fc73e979e0821022",
+      "path": "skills"
+    },
+    "finance-analyst": {
+      "repo": "https://github.com/alirezarezvani/claude-skills",
+      "ref": "19392f7a08264ed00486a251f5b2098321771f94",
+      "path": "finance/skills"
+    },
+    "anthropic-finance": {
+      "repo": "https://github.com/anthropics/knowledge-work-plugins",
+      "ref": "da38ec1ee89d41e5380e652a97382695003396e7",
+      "path": "finance/skills"
+    },
+    "anthropic-data": {
+      "repo": "https://github.com/anthropics/knowledge-work-plugins",
+      "ref": "da38ec1ee89d41e5380e652a97382695003396e7",
+      "path": "data/skills"
+    }
+  },
+  "groups": {
+    "connector-admin": ["sanko/sanko-admin"],
+    "connector-accounting": ["sanko/sanko-accounting"],
+    "connector-marketing": ["sanko/sanko-marketing"],
+    "connector-sales": ["sanko/sanko-sales"],
+    "server-common": ["sanko/sanko-data-discovery"],
+    "data": [
+      "anthropic-data/analyze",
+      "anthropic-data/explore-data",
+      "anthropic-data/sql-queries",
+      "anthropic-data/write-query",
+      "anthropic-data/statistical-analysis",
+      "anthropic-data/data-visualization",
+      "anthropic-data/create-viz",
+      "anthropic-data/validate-data",
+      "anthropic-data/build-dashboard"
+    ],
+    "marketing": ["marketingskills/*"],
+    "accounting": [
+      "finance-analyst/financial-analyst",
+      "anthropic-finance/financial-statements",
+      "anthropic-finance/variance-analysis",
+      "anthropic-finance/reconciliation",
+      "anthropic-finance/journal-entry",
+      "anthropic-finance/journal-entry-prep",
+      "anthropic-finance/close-management"
+    ]
+  },
+  "roles": {
+    "admin": {
+      "server": ["server-common", "data", "marketing", "accounting"],
+      "client": ["connector-admin", "data", "marketing", "accounting"]
+    },
+    "accounting": {
+      "server": ["server-common", "data", "accounting"],
+      "client": ["connector-accounting", "data", "accounting"]
+    },
+    "marketing": {
+      "server": ["server-common", "data", "marketing"],
+      "client": ["connector-marketing", "data", "marketing"]
+    },
+    "sales": {
+      "server": ["server-common", "data"],
+      "client": ["connector-sales", "data"]
+    }
+  }
+}

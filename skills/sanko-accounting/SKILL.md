@@ -17,6 +17,8 @@ Never estimate, guess or invent Sanko figures. If the connector is unavailable, 
 
 Ask Sanko to build accounting reports and analyses; they come back as Excel, Word or PDF files.
 
+Other installed skills (data analysis, marketing, finance) help you frame the request and interpret the result. They do not replace Sanko: company data lives on the Sanko server and all querying and computation happens there.
+
 ## How to work with Sanko
 
 1. Call `agent_profile` once per conversation to see the role and available server skills.
