@@ -55,6 +55,23 @@
     "marketing": [
       "marketingskills/*"
     ],
+    "marketing-server": [
+      "marketingskills/analytics",
+      "marketingskills/attribution",
+      "marketingskills/ab-testing",
+      "marketingskills/revops",
+      "marketingskills/seo-audit",
+      "marketingskills/ai-seo",
+      "marketingskills/site-architecture",
+      "marketingskills/schema",
+      "marketingskills/programmatic-seo",
+      "marketingskills/content-strategy",
+      "marketingskills/customer-research",
+      "marketingskills/churn-prevention",
+      "marketingskills/cro",
+      "marketingskills/marketing-plan",
+      "marketingskills/pricing"
+    ],
     "accounting": [
       "finance-analyst/financial-analyst",
       "anthropic-finance/financial-statements",
@@ -69,7 +86,7 @@
       "server": [
         "server-common",
         "data",
-        "marketing",
+        "marketing-server",
         "accounting"
       ],
       "client": [
@@ -95,7 +112,7 @@
       "server": [
         "server-common",
         "data",
-        "marketing"
+        "marketing-server"
       ],
       "client": [
         "connector-marketing",
