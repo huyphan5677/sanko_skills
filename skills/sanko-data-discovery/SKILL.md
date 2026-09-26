@@ -18,6 +18,7 @@ Never print, log or save the password or the full environment.
 
 ## Discovery steps
 
+0. **Start from the data profile.** The task may include a block "Data this account can read": the tables you are granted, with row counts, size and date ranges, refreshed monthly. Use it to judge how big the task is and which tables to look at first, then confirm the live structure below; it can be up to a month old.
 1. **List what you can read.** `SHOW DATABASES;` then, for each relevant schema, query `information_schema.TABLES` (`TABLE_NAME`, `TABLE_ROWS`, `TABLE_COMMENT`, `UPDATE_TIME`).
 2. **Read the meaning.** Query `information_schema.COLUMNS` (`COLUMN_NAME`, `DATA_TYPE`, `COLUMN_COMMENT`) for candidate tables. Table and column comments are the documentation; prefer tables whose comments match the question.
 3. **Check relationships.** Query `information_schema.KEY_COLUMN_USAGE` for foreign keys; otherwise infer joins from matching `*_id` columns and verify with a count of unmatched rows.

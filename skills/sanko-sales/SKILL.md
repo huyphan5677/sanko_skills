@@ -25,7 +25,7 @@ Other installed skills (data analysis, marketing, finance) help you frame the re
 
 1. Call `agent_profile` once per conversation to see the role and available server skills.
 2. Call `submit_task` with clear Vietnamese instructions and a new, stable `request_id` (any short unique text such as `kqkd-q3-1`; reuse it only to retry the same request). Say which file format is wanted when it matters (Excel, Word, PDF, PNG chart).
-3. Wait with `get_task`; it long-polls. Do not call it rapidly.
+3. Every task response carries `estimated_remaining_seconds` and `check_again_after_seconds`. Tell the user roughly when the result will be ready (for example "khoảng 2 phút nữa"), then call `get_task` with `wait_seconds` set to `check_again_after_seconds`; it long-polls and returns early when the task finishes. Do not call it rapidly.
 4. If the task returns `pending_question`, ask the user and answer with `reply_task` (stable `answer_id`).
 5. For follow-ups on the same work, use `continue_task` with the latest finished task.
 
