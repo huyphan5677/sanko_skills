@@ -22,14 +22,14 @@ Other installed skills (data analysis, marketing, finance) help you frame the re
 ## How to work with Sanko
 
 1. Call `agent_profile` once per conversation to see the role and available server skills.
-2. Call `submit_task` with clear Vietnamese instructions and a new, stable `request_id` (reuse it only to retry the same request). Say which file format is wanted when it matters (Excel, Word, PDF, PNG chart).
+2. Call `submit_task` with clear Vietnamese instructions and a new, stable `request_id` (any short unique text such as `kqkd-q3-1`; reuse it only to retry the same request). Say which file format is wanted when it matters (Excel, Word, PDF, PNG chart).
 3. Wait with `get_task`; it long-polls. Do not call it rapidly.
 4. If the task returns `pending_question`, ask the user and answer with `reply_task` (stable `answer_id`).
 5. For follow-ups on the same work, use `continue_task` with the latest finished task.
 
 ## Delivering results
 
-- When the task succeeds, call `list_artifacts` and give the user the download links. Links expire after five minutes; call `list_artifacts` again if needed.
+- When the task succeeds, call `list_artifacts` and give the user the download links. Links expire after fifteen minutes; call `list_artifacts` again for fresh links.
 - Do not open, read or paste file contents into the chat unless the user explicitly asks. This keeps company data on the server and saves tokens.
 - Relay the task's short summary and headline figures; do not recompute or embellish them.
 - Always pass on the data sources (schema.table and period) and the skills Sanko reports. If files or the summary are labelled "DỮ LIỆU MẪU", say clearly that the figures are sample data, not real Sanko data.

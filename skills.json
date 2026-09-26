@@ -3,7 +3,7 @@
   "sources": {
     "sanko": {
       "repo": "https://github.com/huyphan5677/sanko_skills",
-      "ref": "v3",
+      "ref": "v4",
       "path": "skills"
     },
     "marketingskills": {
@@ -47,10 +47,8 @@
       "anthropic-data/analyze",
       "anthropic-data/explore-data",
       "anthropic-data/sql-queries",
-      "anthropic-data/write-query",
       "anthropic-data/statistical-analysis",
       "anthropic-data/data-visualization",
-      "anthropic-data/create-viz",
       "anthropic-data/validate-data",
       "anthropic-data/build-dashboard"
     ],
@@ -62,7 +60,6 @@
       "anthropic-finance/financial-statements",
       "anthropic-finance/variance-analysis",
       "anthropic-finance/reconciliation",
-      "anthropic-finance/journal-entry",
       "anthropic-finance/journal-entry-prep",
       "anthropic-finance/close-management"
     ]
