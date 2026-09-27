@@ -12,9 +12,11 @@ The Sanko data warehouse evolves continuously: tables, columns and schemas are a
 The database connection is provided by the environment of `run_python`:
 
 - `SANKO_DB_HOST`, `SANKO_DB_PORT`, `SANKO_DB_USER`, `SANKO_DB_PASSWORD`
-- `SANKO_DB_NAME` (your writable schema), `SANKO_DB_REF_SCHEMA` (read-only reference data), `SANKO_DB_WORK_SCHEMA`
+- `SANKO_DB_NAME` (your writable schema; `SANKO_DB_WORK_SCHEMA` is the same schema)
 
-Never print, log or save the password or the full environment.
+Connect with `database=os.environ['SANKO_DB_NAME']`. Company data lives in read-only schemas named `sanko_<area>_ref` (for example `sanko_accounting_ref`); find the ones you can read with `SHOW DATABASES` and always qualify tables as `schema.table`. There is no environment variable for them.
+
+Never print, log or save the password or the full environment. To check that a variable exists, test `'NAME' in os.environ`. If a connection or query fails, read the error and fix your script; report a missing connection only after that check shows it is really missing.
 
 ## Discovery steps
 
