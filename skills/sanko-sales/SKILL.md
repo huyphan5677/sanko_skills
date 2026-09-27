@@ -1,6 +1,6 @@
 ---
 name: sanko-sales
-description: Use for any question about Sanko sales, revenue, orders, customers, products or any Sanko figures. Delegates the work to the Sanko MCP connector, which computes on the Sanko server and returns files. Role: Kinh doanh.
+description: Use for any question about Sanko sales, revenue, orders, customers, products or any Sanko figures. Also use it for work files built from Sanko data. Delegates the work to the Sanko MCP connector, which computes on the Sanko server and returns files. Role: Kinh doanh.
 ---
 
 # Sanko connector (Kinh doanh)
@@ -17,14 +17,18 @@ Never estimate, guess or invent Sanko figures, and never build them yourself in 
 
 ## Scope for this role
 
-Ask Sanko to query and calculate sales figures on request; answers come back as short results and files. Salary, receivables/payables and cost of goods are not available to this role.
+Send to Sanko only one thing: my own sales (by period, product, customer or channel) and the gap to my target. Sanko only shows the signed-in salesperson's own figures; prices, receivables (overdue invoices), salary, cost of goods and other salespeople's numbers are not available. Questions about overdue or lapsed customers are not served: people ask each other directly.
+
+Do yourself: quotations, consultation emails and general product advice. Sanko does not make quotations and has no price list for this role: use the prices the user gives you, and never fill in Sanko prices from memory or estimates.
+
+Anything else is outside what Sanko serves for this role: Sanko answers `blocked` for it. Do not work around that; tell the user it is not served. `agent_profile` lists the served use cases (`primary_use_cases`) and the ones you do yourself (`client_side_use_cases`).
 
 Other installed skills (data analysis, marketing, finance) help you frame the request and interpret the result. They do not replace Sanko: company data lives on the Sanko server and all querying and computation happens there.
 
 ## How to work with Sanko
 
 1. Call `agent_profile` once per conversation to see the role and available server skills.
-2. Call `submit_task` with clear Vietnamese instructions and a new, stable `request_id` (any short unique text such as `kqkd-q3-1`; reuse it only to retry the same request). Say which file format is wanted when it matters (Excel, Word, PDF, PNG chart).
+2. Call `submit_task` with clear Vietnamese instructions and a new, stable `request_id` (any short unique text such as `kqkd-q3-1`; reuse it only to retry the same request). Say which file format is wanted when it matters (Excel, Word, PDF, PNG chart). Sanko already knows who is asking from the signed-in account: "của mình", "của tôi" mean that account's own figures. Never add the user's email, name or other personal details to the instructions.
 3. Every task response carries `estimated_remaining_seconds` and `check_again_after_seconds`. Tell the user roughly when the result will be ready (for example "khoảng 2 phút nữa"), then call `get_task` with `wait_seconds` set to `check_again_after_seconds`; it long-polls and returns early when the task finishes. Do not call it rapidly.
 4. If the task returns `pending_question`, ask the user and answer with `reply_task` (stable `answer_id`).
 5. For follow-ups on the same work, use `continue_task` with the latest finished task.
@@ -34,5 +38,7 @@ Other installed skills (data analysis, marketing, finance) help you frame the re
 - When the task succeeds, call `list_artifacts` and give the user the download links. Links expire after fifteen minutes; call `list_artifacts` again for fresh links.
 - Do not open, read or paste file contents into the chat unless the user explicitly asks. This keeps company data on the server and saves tokens.
 - Relay the task's short summary and headline figures; do not recompute or embellish them.
-- Always pass on the data sources (schema.table and period) and the skills Sanko reports. If files or the summary are labelled "DỮ LIỆU MẪU", say clearly that the figures are sample data, not real Sanko data.
+- Copy figures, periods and labels from Sanko's summary exactly as written. Never round, recompute, re-label or reinterpret them, and never add figures of your own. Always pass on the data sources (schema.table and period) and the skills Sanko reports.
+- Labels mean exactly this. "DỮ LIỆU GIẢ LẬP": the company data of the current development environment, computed normally; say "số liệu từ dữ liệu giả lập của môi trường phát triển" and nothing more (it does not mean real data is missing or not ready). "DỮ LIỆU MẪU": figures Sanko made up because the user asked for sample data. Keep the label in every answer that carries the figures.
+- If Sanko says a figure could not be verified ("Chưa kiểm chứng tự động được"), pass that on unchanged.
 - If Sanko returns `blocked` or reports missing data, tell the user what is missing; never fill the gap with your own estimates or general knowledge.
