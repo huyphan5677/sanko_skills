@@ -3,7 +3,7 @@
   "sources": {
     "sanko": {
       "repo": "https://github.com/huyphan5677/sanko_skills",
-      "ref": "v10",
+      "ref": "v11",
       "path": "skills"
     },
     "marketingskills": {
